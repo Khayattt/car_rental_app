@@ -18,7 +18,7 @@ void main() async  {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  var db = FirebaseFirestore.instance;
+ // var db = FirebaseFirestore.instance;
   runApp(
    MultiProvider(
       providers: [

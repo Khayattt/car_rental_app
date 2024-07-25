@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:car_rental_app/views/Home.dart';
+import 'package:car_rental_app/FirestoreService.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -45,6 +46,21 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: _login,
               child: Text('Login'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                FirestoreService().addItem({
+                  "Available": true,
+                  "Brand": "Sentra",
+                  "Car_plate": "5952348",
+                  "Color": "black",
+                  "Images": "storage/images",
+                  "Model": "2015",
+                  "Rent_price": "35",
+                  "Vin_number": "8944654"
+                }, 'Cars');
+              },
+              child: Text('Test'),
+            ),
           ],
         ),
       ),
@@ -62,11 +78,13 @@ class _LoginPageState extends State<LoginPage> {
       print("User logged in: ${userCredential.user?.email}");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  HomePage()),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
       print("Error: $e");
-      // Show error message to the user
+ 
     }
   }
+
+
 }

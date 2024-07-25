@@ -6,13 +6,13 @@ class Car {
   final int model;
   final String color;
   final int carPlate;
-  final String image_urls;
+  final String imageUrls;
   final int rentPrice;
-  final int vinnumber;
+  final int vinNumber;
   final String available;
   
 
-  Car(this.vinnumber, this.available, {required this.id, required this.brand, required this.model, required this.color, required this.carPlate,
-  required this.image_urls, required this.rentPrice,});
+  Car(this.vinNumber, this.available, {required this.id, required this.brand, required this.model, required this.color, required this.carPlate,
+  required this.imageUrls, required this.rentPrice,});
   
 }

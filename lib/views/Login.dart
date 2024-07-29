@@ -24,6 +24,18 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            
+            Padding(
+              padding: const EdgeInsets.only(bottom:200.0),
+              child: Text(
+                'Welcome to Car Rental App',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -46,21 +58,6 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: _login,
               child: Text('Login'),
             ),
-            ElevatedButton(
-              onPressed: () {
-                FirestoreService().addItem({
-                  "Available": true,
-                  "Brand": "Sentra",
-                  "Car_plate": "5952348",
-                  "Color": "black",
-                  "Images": "storage/images",
-                  "Model": "2015",
-                  "Rent_price": "35",
-                  "Vin_number": "8944654"
-                }, 'Cars');
-              },
-              child: Text('Test'),
-            ),
           ],
         ),
       ),
@@ -82,9 +79,6 @@ class _LoginPageState extends State<LoginPage> {
       );
     } catch (e) {
       print("Error: $e");
- 
     }
   }
-
-
 }

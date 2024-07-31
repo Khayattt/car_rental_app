@@ -14,6 +14,8 @@ import 'FirestoreService.dart';
 
 import 'package:car_rental_app/views/CarDetails.dart';
 
+import 'views/ColorSchema.dart';
+
 void main() async  {
  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -40,12 +42,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) { 
     return MaterialApp(
-      title: 'Flutr Demo',
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade400),
-        useMaterial3: true,
-      ),
+      title: 'Fluter Demo',
+         theme: lightTheme,
       home:  CarDetails(),
       // routes: {
       //   'views/Home': (context) => HomePage(),
@@ -91,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: const Color.fromARGB(255, 241, 182, 4),
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),

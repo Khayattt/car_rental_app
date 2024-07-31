@@ -12,6 +12,8 @@ import 'views/Home.dart';
 
 import 'FirestoreService.dart';
 
+import 'package:car_rental_app/views/CarDetails.dart';
+
 void main() async  {
  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red.shade400),
         useMaterial3: true,
       ),
-      home:  LoginPage(),
+      home:  CarDetails(),
       // routes: {
       //   'views/Home': (context) => HomePage(),
       // },

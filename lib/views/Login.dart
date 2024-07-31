@@ -25,13 +25,28 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             
-            Padding(
-              padding: const EdgeInsets.only(bottom:200.0),
+            Align(
+               alignment: Alignment.centerLeft,
               child: Text(
                 'Welcome to Car Rental App',
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 24.0, 
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+              
+            Padding(
+             padding: const EdgeInsets.only(bottom:200.0),
+              child: Align(
+                 alignment: Alignment.centerLeft,
+                child: Text(
+                  'Please enter you credentials',
+                  style: TextStyle(
+                    fontSize: 16.0, 
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey
+                  ),
                 ),
               ),
             ),

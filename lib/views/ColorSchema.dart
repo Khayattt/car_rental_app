@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Light mode colors
-  static const Color lightPrimary = Color.fromARGB(255, 241, 100, 100);
-  static const Color lightSecondary = Color(0xFF03DAC6);
-  static const Color lightTertiary = Color(0xFFBB86FC);
+  static const Color lightPrimary = Color.fromARGB(255, 212, 212, 212);
+  static const Color lightSecondary = Color.fromARGB(108, 0, 0, 0);
+  static const Color lightTertiary = Color.fromARGB(255, 250, 217, 0);
 
   // Dark mode colors
   static const Color darkPrimary = Color(0xFFBB86FC);

@@ -17,9 +17,10 @@ class _CarDetailsState extends State<CarDetails> {
       appBar: AppBar(
         
         title: Text('New Page'),
+        
       ),
       body: Center(
-        child: Text('This is a new page'),
+        child: Text('This is a new page',style: TextStyle(color: Theme.of(context).colorScheme.tertiary),),
       ),
     );
   }

@@ -227,37 +227,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildBottomNavigationBar() {
-    return Container(
-      color: Colors.white,
-      child: GNav(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        color: Colors.black,
-        activeColor: Colors.black,
-        tabBackgroundColor: Theme.of(context).colorScheme.primary,
-        gap: 8,
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
-        onTabChange: (index) {
-          _onItemTapped(index);
-        },
-        tabs: [
-          GButton(
-            icon: Icons.home,
-            text: 'Home',
-          ),
-          GButton(
-            icon: Icons.favorite_border,
-            text: 'Favorites',
-          ),
-          GButton(
-            icon: Icons.search,
-            text: 'Search',
-          ),
-          GButton(
-            icon: Icons.settings,
-            text: 'Settings',
-          ),
-        ],
+  return Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [AppColors.darkPrimary, AppColors.darkSecondary],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
       ),
-    );
-  }
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    child: GNav(
+      backgroundColor: Colors.transparent,
+      color: AppColors.darkTertiary,
+      activeColor: AppColors.lightTertiary,
+      tabBackgroundColor: AppColors.darkPrimary.withOpacity(0.4),
+      gap: 10, 
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
+      iconSize: 30, 
+      onTabChange: (index) {
+        _onItemTapped(index);
+      },
+      rippleColor: AppColors.lightTertiary.withOpacity(0.2),
+      tabs: [
+        GButton(
+          icon: Icons.home,
+          text: 'Home',
+        ),
+        GButton(
+          icon: Icons.search,
+          text: 'Search',
+        ),
+        GButton(
+          icon: Icons.notifications,
+          text: 'Alerts',
+        ),
+        GButton(
+          icon: Icons.account_circle,
+          text: 'Profile',
+        ),
+      ],
+    ),
+  );
+}
 }

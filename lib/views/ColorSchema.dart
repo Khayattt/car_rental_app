@@ -1,4 +1,3 @@
-// color_schemes.dart
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -15,14 +14,20 @@ class AppColors {
 
 // Define ThemeData for light and dark themes
 ThemeData lightTheme = ThemeData(
-  primaryColor: Color.fromARGB(255, 199, 196, 196),
+  primaryColor: AppColors.lightPrimary,
   secondaryHeaderColor: AppColors.lightSecondary,
   colorScheme: ColorScheme.light(
-    primary: Color.fromARGB(255, 255, 242, 57),
-    secondary: AppColors.lightSecondary,
-    tertiary: const Color.fromARGB(255, 228, 228, 228),
+    primary: AppColors.lightSecondary,
+    secondary: AppColors.lightTertiary,
+    tertiary: AppColors.lightTertiary,
   ),
-  // Add other theme properties as needed
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: AppColors.lightSecondary),
+    bodyText2: TextStyle(color: AppColors.lightSecondary),
+    headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.lightSecondary),
+    headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.lightSecondary),
+    caption: TextStyle(color: AppColors.lightTertiary),
+  ),
 );
 
 ThemeData darkTheme = ThemeData(
@@ -30,8 +35,14 @@ ThemeData darkTheme = ThemeData(
   secondaryHeaderColor: AppColors.darkSecondary,
   colorScheme: ColorScheme.dark(
     primary: AppColors.darkPrimary,
-    secondary: const Color.fromARGB(255, 46, 47, 47),
-    tertiary: Color.fromARGB(255, 218, 207, 58),
+    secondary: AppColors.darkSecondary,
+    tertiary: AppColors.darkTertiary,
   ),
-  // Add other theme properties as needed
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: AppColors.darkTertiary),
+    bodyText2: TextStyle(color: AppColors.darkTertiary),
+    headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.darkTertiary),
+    headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.darkTertiary),
+    caption: TextStyle(color: AppColors.darkSecondary),
+  ),
 );

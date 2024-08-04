@@ -15,12 +15,12 @@ class AppColors {
 
 // Define ThemeData for light and dark themes
 ThemeData lightTheme = ThemeData(
-  primaryColor: AppColors.lightPrimary,
+  primaryColor: Color.fromARGB(255, 199, 196, 196),
   secondaryHeaderColor: AppColors.lightSecondary,
   colorScheme: ColorScheme.light(
-    primary: AppColors.lightPrimary,
+    primary: Color.fromARGB(255, 255, 242, 57),
     secondary: AppColors.lightSecondary,
-    tertiary: AppColors.lightTertiary,
+    tertiary: const Color.fromARGB(255, 228, 228, 228),
   ),
   // Add other theme properties as needed
 );
@@ -30,8 +30,8 @@ ThemeData darkTheme = ThemeData(
   secondaryHeaderColor: AppColors.darkSecondary,
   colorScheme: ColorScheme.dark(
     primary: AppColors.darkPrimary,
-    secondary: AppColors.darkSecondary,
-    tertiary: AppColors.darkTertiary,
+    secondary: const Color.fromARGB(255, 46, 47, 47),
+    tertiary: Color.fromARGB(255, 218, 207, 58),
   ),
   // Add other theme properties as needed
 );

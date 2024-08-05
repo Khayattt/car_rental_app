@@ -55,104 +55,115 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         title: Text('Home'),
       ),
-      backgroundColor: Theme.of(context).colorScheme.secondary,
-      body: SingleChildScrollView(
-        child: Column(
-          
-          children: [
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-               Padding(
-                 padding: const EdgeInsets.only(left:8.0, top: 8),
-                 child: Container(
-                   decoration: BoxDecoration(
-                     border: Border.all(color: AppColors.darkTertiary),
-                     borderRadius: BorderRadius.circular(8), 
-                     color: AppColors.darkPrimary, 
-                     
-                   ),
-                   width: 300,
-                   height: 50,
-                   child: Padding(
-                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                     child: DropdownButtonHideUnderline( 
-                       child: DropdownButton<String>(
-                         style: TextStyle(
-                           color: AppColors.lightTertiary,
-                           fontWeight: FontWeight.bold,
-                           fontSize: 18, 
-                         ),
-                         items: <String>['Beirut', 'Tripoli', 'Sidon', 'Tyre', 'Byblos']
-                             .map((String value) {
-                           return DropdownMenuItem<String>(
-                             value: value,
-                             child: Text(value),
-                           );
-                         }).toList(),
-                         onChanged: (String? newValue) {
-                           setState(() {
-                             _selectedLocation = newValue;
-                           });
-                         },
-                         hint: Text(
-                           'Select a location',
-                           style: TextStyle(
-                             fontSize: 20,
-                             color: AppColors.lightTertiary.withOpacity(0.7), // Slightly lighter hint color
-                           ),
-                         ),
-                         value: _selectedLocation,
-                         dropdownColor: AppColors.darkPrimary, // Background color for the dropdown
-                         icon: Icon(Icons.arrow_drop_down, color: AppColors.lightTertiary), // Custom dropdown icon
-                       ),
-                     ),
-                   ),
-                 ),
-               ),
-
-
-                IconButton(onPressed: () {}, icon: Icon(Icons.search,  color: AppColors.darkTertiary,)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.add_alert, color: AppColors.darkTertiary, )),
-              ],
-            ),
-            SizedBox(height: 20,),
-            
-            buildCarouselSlider(urlImage),
-            SizedBox(height: 20,),
-            buildIndicator(activeIndex, urlImage.length),
-            SizedBox(height: 40,),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Top vehicle',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.darkTertiary, ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      print('See More tapped!');
-                    },
-                    child: Text(
-                      'See More',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(243, 226, 33, 1)),
-                    ),
-                  ),
-                ],
+      backgroundColor: Colors.transparent, 
+      body: Stack(
+        children: [
+          // Background Image
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage('https://i.pinimg.com/564x/1a/80/5e/1a805ecc8df95262c8da586749fa40ea.jpg'), 
+                fit: BoxFit.cover,
+                 colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.7), // Adjust the opacity here
+                  BlendMode.darken, // Use darken or any other blend mode
+                ),
               ),
             ),
-            SizedBox(height: 20,),
-           
-            buildHorizontalImageScroll(horizontalImagesWithDescriptions,),
-            SizedBox(height: 20,),
-          ],
-        ),
+          ),
+          // Content
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left:8.0, top: 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.darkTertiary),
+                          borderRadius: BorderRadius.circular(8), 
+                          color: AppColors.darkPrimary, 
+                        ),
+                        width: 300,
+                        height: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                          child: DropdownButtonHideUnderline( 
+                            child: DropdownButton<String>(
+                              style: TextStyle(
+                                color: AppColors.lightTertiary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18, 
+                              ),
+                              items: <String>['Beirut', 'Tripoli', 'Sidon', 'Tyre', 'Byblos']
+                                  .map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _selectedLocation = newValue;
+                                });
+                              },
+                              hint: Text(
+                                'Select a location',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: AppColors.lightTertiary.withOpacity(0.7), // Slightly lighter hint color
+                                ),
+                              ),
+                              value: _selectedLocation,
+                              dropdownColor: AppColors.darkPrimary, // Background color for the dropdown
+                              icon: Icon(Icons.arrow_drop_down, color: AppColors.lightTertiary), // Custom dropdown icon
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.search,  color: AppColors.darkTertiary,)),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.add_alert, color: AppColors.darkTertiary, )),
+                  ],
+                ),
+                SizedBox(height: 20,),
+                buildCarouselSlider(urlImage),
+                SizedBox(height: 20,),
+                buildIndicator(activeIndex, urlImage.length),
+                SizedBox(height: 40,),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Top vehicle',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.darkTertiary, ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          print('See More tapped!');
+                        },
+                        child: Text(
+                          'See More',
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(243, 226, 33, 1)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20,),
+                buildHorizontalImageScroll(horizontalImagesWithDescriptions,),
+                SizedBox(height: 20,),
+              ],
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
@@ -166,7 +177,7 @@ class _HomePageState extends State<HomePage> {
         return buildImage(imageUrl, index);
       },
       options: CarouselOptions(
-        height: 200,
+        height: 300,
         autoPlay: true,
         enlargeCenterPage: true,
         onPageChanged: (index, reason) => setState(() => activeIndex = index),
@@ -191,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                 Image.network(
                   imageUrl,
                   fit: BoxFit.cover,
-                  height: 120, 
+                  height: 150, 
                 ),
                 SizedBox(height: 8),
                 Text(
@@ -227,46 +238,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildBottomNavigationBar() {
-  return Container(
-    decoration: BoxDecoration(
-      gradient: LinearGradient(
-        colors: [AppColors.darkPrimary, AppColors.darkSecondary],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [AppColors.darkPrimary, AppColors.darkSecondary],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-    ),
-    child: GNav(
-      backgroundColor: Colors.transparent,
-      color: AppColors.darkTertiary,
-      activeColor: AppColors.lightTertiary,
-      tabBackgroundColor: AppColors.darkPrimary.withOpacity(0.4),
-      gap: 10, 
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
-      iconSize: 30, 
-      onTabChange: (index) {
-        _onItemTapped(index);
-      },
-      rippleColor: AppColors.lightTertiary.withOpacity(0.2),
-      tabs: [
-        GButton(
-          icon: Icons.home,
-          text: 'Home',
-        ),
-        GButton(
-          icon: Icons.search,
-          text: 'Search',
-        ),
-        GButton(
-          icon: Icons.notifications,
-          text: 'Alerts',
-        ),
-        GButton(
-          icon: Icons.account_circle,
-          text: 'Profile',
-        ),
-      ],
-    ),
-  );
-}
+      child: GNav(
+        backgroundColor: Colors.transparent,
+        color: AppColors.darkTertiary,
+        activeColor: AppColors.lightTertiary,
+        tabBackgroundColor: AppColors.darkPrimary.withOpacity(0.4),
+        gap: 10, 
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
+        iconSize: 30, 
+        onTabChange: (index) {
+          _onItemTapped(index);
+        },
+        rippleColor: AppColors.lightTertiary.withOpacity(0.2),
+        tabs: [
+          GButton(
+            icon: Icons.home,
+            text: 'Home',
+          ),
+          GButton(
+            icon: Icons.search,
+            text: 'Search',
+          ),
+          GButton(
+            icon: Icons.notifications,
+            text: 'Alerts',
+          ),
+          GButton(
+            icon: Icons.account_circle,
+            text: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
 }

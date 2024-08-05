@@ -1,4 +1,3 @@
-// color_schemes.dart
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -18,11 +17,17 @@ ThemeData lightTheme = ThemeData(
   primaryColor: AppColors.lightPrimary,
   secondaryHeaderColor: AppColors.lightSecondary,
   colorScheme: ColorScheme.light(
-    primary: AppColors.lightPrimary,
-    secondary: AppColors.lightSecondary,
+    primary: AppColors.lightSecondary,
+    secondary: AppColors.lightTertiary,
     tertiary: AppColors.lightTertiary,
   ),
-  // Add other theme properties as needed
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: AppColors.lightSecondary),
+    bodyText2: TextStyle(color: AppColors.lightSecondary),
+    headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.lightSecondary),
+    headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.lightSecondary),
+    caption: TextStyle(color: AppColors.lightTertiary),
+  ),
 );
 
 ThemeData darkTheme = ThemeData(
@@ -33,5 +38,11 @@ ThemeData darkTheme = ThemeData(
     secondary: AppColors.darkSecondary,
     tertiary: AppColors.darkTertiary,
   ),
-  // Add other theme properties as needed
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: AppColors.darkTertiary),
+    bodyText2: TextStyle(color: AppColors.darkTertiary),
+    headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.darkTertiary),
+    headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.darkTertiary),
+    caption: TextStyle(color: AppColors.darkSecondary),
+  ),
 );

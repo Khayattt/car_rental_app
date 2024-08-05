@@ -7,9 +7,9 @@ class AppColors {
   static const Color lightTertiary = Color.fromARGB(255, 250, 217, 0);
 
   // Dark mode colors
-  static const Color darkPrimary = Color.fromARGB(108, 0, 0, 0);
-  static const Color darkSecondary = Color.fromARGB(255, 212, 212, 212);
-  static const Color darkTertiary = Color.fromARGB(255, 250, 217, 0);
+  static const Color darkPrimary = Color.fromARGB(255, 44, 43, 44);
+  static const Color darkSecondary = Color.fromARGB(255, 248, 255, 31);
+  static const Color darkTertiary = Color.fromARGB(255, 238, 238, 238);
 }
 
 // Define ThemeData for light and dark themes

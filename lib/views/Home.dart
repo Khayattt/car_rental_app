@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:car_rental_app/Widgets/ImageFrame.dart';
 
 void main() => runApp(MaterialApp(
   home: HomePage(),
@@ -199,11 +200,14 @@ class _HomePageState extends State<HomePage> {
             margin: EdgeInsets.symmetric(horizontal: 4),
             child: Column(
               children: [
-                Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  height: 150, 
-                ),
+               BorderedNetworkImage(
+            imageUrl: imageUrl,
+            borderWidth: 3.0,
+            borderColor: Color.fromARGB(117, 255, 255, 255),
+            borderRadius: 16.0,
+            minHeight: 100,
+           // hoverColor: Color.fromARGB(117, 255, 0, 0),
+          ),
                 SizedBox(height: 8),
                 Text(
                   description,

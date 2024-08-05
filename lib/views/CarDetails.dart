@@ -25,3 +25,4 @@ class _CarDetailsState extends State<CarDetails> {
     );
   }
 }
+

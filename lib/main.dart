@@ -1,3 +1,4 @@
+import 'package:car_rental_app/views/searchpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 

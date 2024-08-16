@@ -1,4 +1,5 @@
 import 'package:car_rental_app/views/ColorSchema.dart';
+import 'package:car_rental_app/views/searchpage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -59,18 +60,18 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.secondary,
         title: Text('Home'),
       ),
-      backgroundColor: Colors.transparent, 
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: [
           // Background Image
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage('https://i.pinimg.com/564x/1a/80/5e/1a805ecc8df95262c8da586749fa40ea.jpg'), 
+                image: NetworkImage('https://i.pinimg.com/564x/1a/80/5e/1a805ecc8df95262c8da586749fa40ea.jpg'),
                 fit: BoxFit.cover,
-                 colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.7), // Adjust the opacity here
-                  BlendMode.darken, // Use darken or any other blend mode
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.7),
+                  BlendMode.darken,
                 ),
               ),
             ),
@@ -87,19 +88,19 @@ class _HomePageState extends State<HomePage> {
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: AppColors.darkTertiary),
-                          borderRadius: BorderRadius.circular(8), 
-                          color: AppColors.darkPrimary, 
+                          borderRadius: BorderRadius.circular(8),
+                          color: AppColors.darkPrimary,
                         ),
-                        width: 300,
+                        width: 280,
                         height: 50,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                          child: DropdownButtonHideUnderline( 
+                          child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               style: TextStyle(
                                 color: AppColors.lightTertiary,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18, 
+                                fontSize: 18,
                               ),
                               items: <String>['Beirut', 'Tripoli', 'Sidon', 'Tyre', 'Byblos']
                                   .map((String value) {
@@ -117,12 +118,12 @@ class _HomePageState extends State<HomePage> {
                                 'Select a location',
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: AppColors.lightTertiary.withOpacity(0.7), // Slightly lighter hint color
+                                  color: AppColors.lightTertiary.withOpacity(0.7),
                                 ),
                               ),
                               value: _selectedLocation,
-                              dropdownColor: AppColors.darkPrimary, // Background color for the dropdown
-                              icon: Icon(Icons.arrow_drop_down, color: AppColors.lightTertiary), // Custom dropdown icon
+                              dropdownColor: AppColors.darkPrimary,
+                              icon: Icon(Icons.arrow_drop_down, color: AppColors.lightTertiary),
                             ),
                           ),
                         ),
@@ -159,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                buildHorizontalImageScroll(horizontalImagesWithDescriptions,),
+                buildHorizontalImageGrid(horizontalImagesWithDescriptions),
                 SizedBox(height: 20,),
               ],
             ),
@@ -182,33 +183,44 @@ class _HomePageState extends State<HomePage> {
         autoPlay: true,
         enlargeCenterPage: true,
         onPageChanged: (index, reason) => setState(() => activeIndex = index),
-        autoPlayAnimationDuration: Duration(seconds: 1), )
+        autoPlayAnimationDuration: Duration(seconds: 1),
+      ),
     );
   }
 
-  Widget buildHorizontalImageScroll(List<Map<String, String>> images) {
+  Widget buildHorizontalImageGrid(List<Map<String, String>> images) {
     return Container(
-      height: 200, 
-      child: ListView.builder(
+      height: 200,
+      child: GridView.builder(
         scrollDirection: Axis.horizontal,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          childAspectRatio: 1.0,
+        ),
         itemCount: images.length,
         itemBuilder: (context, index) {
           final imageUrl = images[index]['url']!;
           final description = images[index]['description']!;
           return Container(
-            width: 150, 
+            width: 150,
             margin: EdgeInsets.symmetric(horizontal: 4),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               BorderedNetworkImage(
-            imageUrl: imageUrl,
-         
-
-          ),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                  ),
+                ),
                 SizedBox(height: 8),
                 Text(
                   description,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,color: AppColors.darkTertiary,),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.darkTertiary),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -222,11 +234,13 @@ class _HomePageState extends State<HomePage> {
   Widget buildImage(String urlImage, int index) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 4),
-      color: Colors.grey,
-      child: Image.network(
-        urlImage,
-        fit: BoxFit.cover,
-        width: double.infinity,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.network(
+          urlImage,
+          fit: BoxFit.cover,
+          width: double.infinity,
+        ),
       ),
     );
   }
@@ -253,11 +267,17 @@ class _HomePageState extends State<HomePage> {
         color: AppColors.darkTertiary,
         activeColor: AppColors.lightTertiary,
         tabBackgroundColor: AppColors.darkPrimary.withOpacity(0.4),
-        gap: 10, 
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
-        iconSize: 30, 
+        gap: 10,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        iconSize: 30,
         onTabChange: (index) {
           _onItemTapped(index);
+          if (index == 1) { // Assuming 'Search' button is at index 1
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPage()),
+            );
+          }
         },
         rippleColor: AppColors.lightTertiary.withOpacity(0.2),
         tabs: [

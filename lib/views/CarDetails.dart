@@ -2,6 +2,7 @@ import 'package:car_rental_app/views/ColorSchema.dart';
 import 'package:flutter/material.dart';
 import 'ColorSchema.dart';
 import 'package:car_rental_app/modelViews/Cars_MV.dart';
+import 'package:car_rental_app/Widgets/PrimaryButton.dart';
 
 class CarDetails extends StatefulWidget {
   const CarDetails({super.key});
@@ -9,6 +10,11 @@ class CarDetails extends StatefulWidget {
   @override
   State<CarDetails> createState() => _CarDetailsState();
 }
+var carData = {
+                'make': 'Toyota',
+                'model': 'Corolla',
+                'year': 2020
+              };
 
 class _CarDetailsState extends State<CarDetails> {
   @override
@@ -27,18 +33,16 @@ class _CarDetailsState extends State<CarDetails> {
               child: Text('This is a new page',style: TextStyle(color: Theme.of(context).colorScheme.tertiary),),
             ),
             Center(
-               child: ElevatedButton(
+               child: PrimaryButton(
+            text: 'Click Me',
             onPressed: () {
-              // Example car data
-              var carData = {
-                'make': 'Toyota',
-                'model': 'Corolla',
-                'year': 2020
-              };
-              addCar(carData); // Call the addCar function
+              print('Button Pressed');
             },
-            child: Text('Add Car'),
-                ),
+            color: Colors.green,
+            borderRadius: 12.0,
+            padding: 20.0,
+            textStyle: TextStyle(color: Colors.white, fontSize: 18.0),
+          ),
             )
           ],
         ),

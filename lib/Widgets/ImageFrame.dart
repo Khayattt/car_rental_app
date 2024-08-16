@@ -8,12 +8,13 @@ class BorderedNetworkImage extends StatelessWidget {
   final double minHeight;
 
   const BorderedNetworkImage({
+    // these are default values
     Key? key,
     required this.imageUrl,
-    this.borderWidth = 2.0,
-    this.borderColor = Colors.black,
-    this.borderRadius = 8.0,
-    this.minHeight = 100.0, // Set a default minimum height
+    this.borderWidth = 3.0,
+    this.borderColor = Colors.grey,
+    this.borderRadius = 16.0,
+    this.minHeight = 100.0, 
   }) : super(key: key);
 
   @override

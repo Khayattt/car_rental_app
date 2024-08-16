@@ -202,11 +202,8 @@ class _HomePageState extends State<HomePage> {
               children: [
                BorderedNetworkImage(
             imageUrl: imageUrl,
-            borderWidth: 3.0,
-            borderColor: Color.fromARGB(117, 255, 255, 255),
-            borderRadius: 16.0,
-            minHeight: 100,
-           // hoverColor: Color.fromARGB(117, 255, 0, 0),
+         
+
           ),
                 SizedBox(height: 8),
                 Text(

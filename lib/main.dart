@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fluter Demo',
          theme: lightTheme,
-      home:  HomePage(),
+      home:  CarDetails(),
       // routes: {
       //   'views/Home': (context) => HomePage(),
       // },

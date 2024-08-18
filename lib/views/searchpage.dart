@@ -1,4 +1,6 @@
+import 'package:car_rental_app/Widgets/gridview.dart';
 import 'package:flutter/material.dart';
+
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -11,16 +13,12 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         title: Text('Search'),
       ),
-      body: Center(
-        child: Text('Search Page', style: TextStyle(fontSize: 24)),
-      )
-      ,
-       backgroundColor: Colors.transparent,
-       
+      body: Categoriesscreen(),
+      backgroundColor: Colors.transparent,
     );
   }
 }

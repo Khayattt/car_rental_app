@@ -15,7 +15,5 @@ class FirestoreService {
     return _db.collection(collection).doc(id).delete();
   }
 
-  Stream<QuerySnapshot> getItems(String collection) {
-    return _db.collection(collection).snapshots();
-  }
+
 }
